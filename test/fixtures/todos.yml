@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  created_at: 2022-05-09 04:58:36
+  isComplete: false
+  status: MyString
+  user: one
+
+two:
+  title: MyString
+  description: MyString
+  created_at: 2022-05-09 04:58:36
+  isComplete: false
+  status: MyString
+  user: two
