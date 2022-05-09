@@ -23,11 +23,10 @@ function SignUpForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
-            email: user.email,
-            password: user.password
+            ...user
         }
         try {
-            await axios.post('/users', payload)
+            await axios.post('/auth', payload)
             .then((res) => {
                 if (res.status === 201){
                     setRedirect(true)
