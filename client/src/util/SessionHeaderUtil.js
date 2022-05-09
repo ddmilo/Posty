@@ -12,9 +12,10 @@ export function saveAuthTokens(headers) {
   localStorage.setItem("client", headers.client);
   localStorage.setItem("uid", headers.uid);
   localStorage.setItem("expiry", headers.expiry);
+  console.log(localStorage)
 }
 
-export default function setAxiosDefaults() {
+export function setAxiosDefaults() {
   axios.defaults.headers["access-token"] = localStorage.getItem("access-token");
   axios.defaults.headers.client = localStorage.getItem("client");
   axios.defaults.headers.uid = localStorage.getItem("uid");

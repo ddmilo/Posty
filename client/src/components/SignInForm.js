@@ -23,10 +23,11 @@ function SignInForm() {
         ...signIn
       }
       try {
-          await axios.post('/auth/sign_in')
+          await axios.post('/auth/sign_in', payload)
           .then((res) => {
             console.log(res)
-              if (res.status === 201){
+              if (res.status === 200){
+                saveAuthTokens(res.headers)
                   console.log(res)
               }
           })
