@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
     private
 
     def create_user_params
-        params.permit(:user, :user_id, :email, :password, :tokens)
+        params.permit(:user, :user_id, :email, :password, :tokens, :first_name, :last_name)
     end
 
 end

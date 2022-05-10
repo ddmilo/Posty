@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route as Path} from 'react-router';
 import Dashboard from '../components/Dashboard';
+import Home from '../components/Home';
 import SignInForm from '../components/SignInForm';
 import SignUpForm from '../components/SignUpForm';
 
@@ -10,7 +11,7 @@ function routes() {
     <div>
         <Path 
             path = '/'
-            element={<SignInForm />}
+            element={<Home />}
         />
         <Path 
             path = 'signup'
