@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, TextField } from '@mui/material'
 import { saveAuthTokens } from '../util/SessionHeaderUtil'
+import { Navigate, useNavigate } from 'react-router'
 
 
 
@@ -10,6 +11,8 @@ function SignInForm() {
     email: '',
     password: ''
   })
+
+  const navigate = useNavigate();
 
   const handleTextField = (e) => {
     setSignIn({...signIn, [e.target.name]: e.target.value})
@@ -25,11 +28,15 @@ function SignInForm() {
       try {
           await axios.post('/auth/sign_in', payload)
           .then((res) => {
+            const userInfo = res.data.data
+            const userId = res.data.data.id
             console.log(res)
               if (res.status === 200){
                 saveAuthTokens(res.headers)
                   console.log(res)
-              }
+              };
+              navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})
+
           })
 
       } catch (err){
