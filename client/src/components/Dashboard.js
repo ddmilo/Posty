@@ -3,9 +3,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {useNavigate, useLocation, useParams } from 'react-router-dom';
 import setAxiosDefaults, { clearAuthTokens, userIsLoggedIn } from '../util/SessionHeaderUtil'
+import CreateTodo from './CreateTodo';
 
 function Dashboard() {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState([]);
+    const [showTodoForm, setTodoForm] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const {id} = useParams();    
@@ -31,11 +33,20 @@ function Dashboard() {
 
     }
 
+    const handleCreateTaskButton = () => {
+        setTodoForm(true)
+        console.log(showTodoForm)
+    }
     
   return (
     <div>
         <h1>Hello {user.first_name}, Welcome to your dashboard!</h1>
-        <Button variant='text' >Create Task</Button>
+        <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
+            {showTodoForm ? 
+                <CreateTodo userId={id} userName={user.first_name}/>
+                :
+                null
+            }
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>
     </div>
   )
