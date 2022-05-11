@@ -4,14 +4,16 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate, useLocation, useParams } from 'react-router-dom';
 import setAxiosDefaults, { clearAuthTokens, userIsLoggedIn } from '../util/SessionHeaderUtil'
 import CreateTodo from './CreateTodo';
+import TodosList from './TodosList';
 
-function Dashboard() {
+function Dashboard(props) {
     const [user, setUser] = useState([]);
     const [showTodoForm, setTodoForm] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const {id} = useParams();    
+    const {id} = props.userId;    
     console.log(location.state);
+    console.log(id)
 
     useEffect(() => {
         async function fetchUser(){
@@ -19,6 +21,7 @@ function Dashboard() {
                 await axios.get(`/users/${id}`)
                 .then(res => {
                     setUser(res.data)
+                    console.log(res)
                 })
             } catch (error) {
                 console.log(error)
@@ -29,6 +32,7 @@ function Dashboard() {
 
     const signOut = () => {
         clearAuthTokens()
+        props.setLoggedFalse()
         navigate('/', {replace: true})
 
     }
@@ -37,6 +41,8 @@ function Dashboard() {
         setTodoForm(true)
         console.log(showTodoForm)
     }
+    // console.log(user)
+    // console.log(user.todos.length)
     
   return (
     <div>
@@ -47,6 +53,11 @@ function Dashboard() {
                 :
                 null
             }
+            {/* {user.todos.length > 0 ?
+                <TodosList />
+                :
+                null
+            } */}
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>
     </div>
   )

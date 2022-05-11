@@ -9,8 +9,6 @@ function CreateTodo(props) {
         description: '', 
     })
 
-    // let userId = useParams();
-    // let userName = useParams();
 
     const handleOnChange = (e) => {
         setTodo({...todo, [e.target.name]: e.target.value})
