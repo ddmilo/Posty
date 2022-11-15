@@ -69,9 +69,9 @@ function App() {
   return (
   <BrowserRouter>
     <Routes>
-      <Route path='/'  element={<Home userId={user.id} isLoggedIn={isLoggedIn}/>} />
+      <Route path='/'  element={<Home user={user} userId={user.id} isLoggedIn={isLoggedIn}/>} />
       <Route path='/signup' element={<SignUpForm />} />
-      <Route path='/dashboard/:id' element={<Dashboard  userId={user.id} setLoggedFalse={setLoggedFalse}/>} />
+      <Route path='/dashboard/:id' element={<Dashboard  user={user} userId={user.id} setLoggedFalse={setLoggedFalse}/>} />
     </Routes>
   </BrowserRouter>
 

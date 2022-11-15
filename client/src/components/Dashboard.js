@@ -11,12 +11,14 @@ function Dashboard(props) {
     const [showTodoForm, setTodoForm] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const {id} = props.userId;    
+    console.log(user)
     console.log(location.state);
-    console.log(id)
+    // console.log(id)
+    console.log(props)
 
     useEffect(() => {
         async function fetchUser(){
+            const {id} = props.userId;    
             try {
                 await axios.get(`/users/${id}`)
                 .then(res => {
@@ -46,10 +48,10 @@ function Dashboard(props) {
     
   return (
     <div>
-        <h1>Hello {user.first_name}, Welcome to your dashboard!</h1>
+        <h1>Hello {props.user.first_name}, Welcome to your dashboard!</h1>
         <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
-                <CreateTodo userId={id} userName={user.first_name}/>
+                <CreateTodo userId={user.id} userName={user.first_name}/>
                 :
                 null
             }
