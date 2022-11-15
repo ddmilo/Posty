@@ -17,8 +17,9 @@ function CreateTodo(props) {
 
     const handleSubmit = async (e) => {
         const payload = {...todo}
+        const id = localStorage.getItem("localUserId")
         try {
-            await axios.post(`/users/${props.userId}/todos`, payload)
+            await axios.post(`/users/${id}/todos`, payload)
                 .then(res => {
                     if(res.status === 201){
                         console.log("ToDo created successfully for User:" + " " + props.userName)

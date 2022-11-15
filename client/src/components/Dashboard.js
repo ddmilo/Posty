@@ -52,7 +52,7 @@ function Dashboard(props) {
         <h1>Hello {props.user.first_name}, Welcome to your dashboard!</h1>
         <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
-                <CreateTodo userId={user.id} userName={user.first_name}/>
+                <CreateTodo userId={props.user.id} userName={props.user.first_name}/>
                 :
                 null
             }
