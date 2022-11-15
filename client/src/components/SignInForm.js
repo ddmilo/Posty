@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, TextField } from '@mui/material'
-import { saveAuthTokens } from '../util/SessionHeaderUtil'
+import { saveAuthTokens, saveUserId } from '../util/SessionHeaderUtil'
 import { Navigate, useNavigate } from 'react-router'
 
 
@@ -33,6 +33,7 @@ function SignInForm() {
             console.log(res)
               if (res.status === 200){
                 saveAuthTokens(res.headers)
+                saveUserId(userId)
                   console.log(res)
               };
               navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})

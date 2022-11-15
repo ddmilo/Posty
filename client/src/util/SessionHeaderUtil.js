@@ -15,6 +15,11 @@ export function saveAuthTokens(headers) {
   console.log(localStorage)
 }
 
+export function saveUserId(userId){
+  localStorage.setItem("localUserId", userId)
+  console.log(localStorage)
+}
+
 export function setAxiosDefaults() {
   axios.defaults.headers["access-token"] = localStorage.getItem("access-token");
   axios.defaults.headers.client = localStorage.getItem("client");
@@ -37,4 +42,5 @@ export function clearAuthTokens() {
   localStorage.removeItem("client");
   localStorage.removeItem("uid");
   localStorage.removeItem("expiry");
+  localStorage.removeItem("localUserId")
 }

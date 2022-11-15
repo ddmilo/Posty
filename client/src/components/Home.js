@@ -10,12 +10,12 @@ function Home(props) {
   const [isSignedIn, setIsSignedIn] = useState(false)
   const [setUser, SetTheUser] = useState([])
   const navigate = useNavigate();
-  const id = props.user.id
+  const id = localStorage.getItem("localUserId")
   console.log(props)
   console.log(id)
   const isLoggedIn = () => {
       if(props.isLoggedIn === true){
-          navigate(`/dashboard/${6}`)
+          navigate(`/dashboard/${id}`)
           
       }
   }

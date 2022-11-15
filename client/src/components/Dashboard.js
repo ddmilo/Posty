@@ -18,7 +18,8 @@ function Dashboard(props) {
 
     useEffect(() => {
         async function fetchUser(){
-            const {id} = props.userId;    
+            const {id} = localStorage.getItem("localUserId");    
+            console.log(id)
             try {
                 await axios.get(`/users/${id}`)
                 .then(res => {
