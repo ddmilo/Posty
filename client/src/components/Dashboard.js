@@ -9,12 +9,14 @@ import TodosList from './TodosList';
 function Dashboard(props) {
     const [user, setUser] = useState([]);
     const [showTodoForm, setTodoForm] = useState(false);
+    const [userTodos, setUserTodos] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(user)
-    console.log(location.state);
-    // console.log(id)
-    console.log(props)
+    console.log(userTodos)
+    // console.log(user)
+    // console.log(location.state);
+    // // console.log(id)
+    // console.log(props)
 
     useEffect(() => {
         async function fetchUser(){
@@ -31,7 +33,17 @@ function Dashboard(props) {
             }
         }
         fetchUser();
-    }, [])
+    })
+
+    const fetchUserTodo = () => {
+        const id = localStorage.getItem("localUserId")
+        axios.get(`/users/${id}/todos`)
+            .then( res => {
+                setUserTodos(res.data)
+                console.log(res)
+                console.log(userTodos)
+            })
+    }
 
     const signOut = () => {
         clearAuthTokens()
@@ -52,12 +64,12 @@ function Dashboard(props) {
         <h1>Hello {props.user.first_name}, Welcome to your dashboard!</h1>
         <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
-                <CreateTodo userId={props.user.id} userName={props.user.first_name}/>
+                <CreateTodo fetchUserTodo={fetchUserTodo} userId={props.user.id} userName={props.user.first_name}/>
                 :
                 null
             }
             
-                <TodosList userTodos={props.user.todos} />
+                <TodosList fetchUserTodo={fetchUserTodo} />
 
     
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>

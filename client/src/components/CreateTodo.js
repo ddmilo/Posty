@@ -24,7 +24,7 @@ function CreateTodo(props) {
                 .then(res => {
                     if(res.status === 201){
                         console.log("ToDo created successfully for User:" + " " + props.userName)
-                        navigate(`/dashboard/${id}`)
+                        props.fetchUserTodo();
                     }
                 })
         } catch (error) {
