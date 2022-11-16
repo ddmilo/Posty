@@ -1,8 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-function TodosList(props) {
+function TodosList({userTodos}) {
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    async function fetchTodo() {
+      const todo = await userTodos;
+      console.log(todos)
+
+      if (todo) {
+        setTodos(todo)
+      } else {
+        console.log("Fetch error")
+      }
+    }
+  
+    fetchTodo()
+  })
+  
+
   return (
-    <div>TodosList</div>
+    <div>
+      {todos.map((todo) => (
+        <div>
+          <h2>Task: {todo.title}</h2>
+          <h3>Description: {todo.description}</h3>
+        </div>
+      ))}
+    </div>
   )
 }
 

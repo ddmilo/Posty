@@ -1,13 +1,14 @@
 import { Button, TextField } from '@mui/material'
 import axios from 'axios'
 import {React, useState} from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
 function CreateTodo(props) {
     const [todo, setTodo] = useState({
         title: '',
         description: '', 
     })
+    const navigate = useNavigate()
 
 
     const handleOnChange = (e) => {
@@ -23,6 +24,7 @@ function CreateTodo(props) {
                 .then(res => {
                     if(res.status === 201){
                         console.log("ToDo created successfully for User:" + " " + props.userName)
+                        navigate(`/dashboard/${id}`)
                     }
                 })
         } catch (error) {

@@ -56,11 +56,10 @@ function Dashboard(props) {
                 :
                 null
             }
-            {/* {user.todos.length > 0 ?
-                <TodosList />
-                :
-                null
-            } */}
+            
+                <TodosList userTodos={props.user.todos} />
+
+    
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>
     </div>
   )

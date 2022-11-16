@@ -1,5 +1,7 @@
 class Api::V1::TodosController < ApplicationController
     def index
+        @user = User.find(params[:user_id])
+        render json: @user.todos.all
     end
 
     def create 
