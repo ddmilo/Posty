@@ -4,24 +4,19 @@ import {Link, useNavigate, useParams} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { setAxiosDefaults, userIsLoggedIn} from '../util/SessionHeaderUtil';
+import Dashboard from './Dashboard';
 
 
 function Home(props) {
   const [isSignedIn, setIsSignedIn] = useState(false)
-  const [setUser, SetTheUser] = useState([])
+  // const [setUser, SetTheUser] = useState([])
   const navigate = useNavigate();
-  const id = localStorage.getItem("localUserId")
+  const id = props.user.id
   console.log(props)
-  console.log(id)
-  const isLoggedIn = () => {
-      if(props.isLoggedIn === true){
-          navigate(`/dashboard/${id}`)
-          
-      }
-  }
-
   console.log(props.isLoggedIn)
-  isLoggedIn();
+
+
+  // isLoggedIn();
 //   useEffect(() => {
 //     console.log(localStorage)
 //     async function fetchData(){
@@ -63,11 +58,25 @@ function Home(props) {
 // console.log(setUser)
   return (
     <div className="Home">
+      { props.dataLoaded && props.user.length > 0 ? <Dashboard  user={props.user} userId={props.user.id} setLoggedFalse={props.setLoggedFalse}/> 
+      
+      
+      : 
+      
       <div>
-        Sign Out
-      </div>
-      <SignInForm />
-      <Link to="/signup">Don't have an account? Register here.</Link>
+        <div>
+          Sign Out
+        </div>
+        <SignInForm />
+        <Link to="/signup">Don't have an account?
+        Register here.</Link>
+       </div>
+      
+      }
+
+
+
+
     </div>
   );
 }

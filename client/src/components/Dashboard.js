@@ -12,37 +12,40 @@ function Dashboard(props) {
     const [userTodos, setUserTodos] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(userTodos)
+    console.log(props)
     // console.log(user)
     // console.log(location.state);
     // // console.log(id)
     // console.log(props)
 
-    useEffect(() => {
-        async function fetchUser(){
-            const {id} = localStorage.getItem("localUserId");    
-            console.log(id)
-            try {
-                await axios.get(`/users/${id}`)
-                .then(res => {
-                    setUser(res.data)
-                    console.log(res)
-                })
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchUser();
-    })
+    // useEffect(() => {
+    // })
+    // useEffect(() => {
+    //     async function fetchUser(){
+    //         const {id} = localStorage.getItem("localUserId");    
+    //         console.log(id)
+    //         try {
+    //             await axios.get(`/users/${id}`)
+    //             .then(res => {
+    //                 setUser(res.data)
+    //                 console.log(res)
+    //             })
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     fetchUser();
+    // })
 
-    const fetchUserTodo = () => {
-        const id = localStorage.getItem("localUserId")
+    const setUserDash = () => {
+        setUser(props.user)
+        console.log("User set in dashboard:" + " " + user)
+
+    }
+
+    const fetchUserTodos = () => {
+        const id = props.user.id
         axios.get(`/users/${id}/todos`)
-            .then( res => {
-                setUserTodos(res.data)
-                console.log(res)
-                console.log(userTodos)
-            })
     }
 
     const signOut = () => {
@@ -64,12 +67,13 @@ function Dashboard(props) {
         <h1>Hello {props.user.first_name}, Welcome to your dashboard!</h1>
         <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
-                <CreateTodo fetchUserTodo={fetchUserTodo} userId={props.user.id} userName={props.user.first_name}/>
+                <CreateTodo fetchUserTodo={fetchUserTodos} userId={props.user.id} userName={props.user.first_name}/>
                 :
                 null
             }
             
-                <TodosList fetchUserTodo={fetchUserTodo} />
+            
+                <TodosList todos={props.user.todos} />
 
     
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>

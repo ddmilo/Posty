@@ -26,20 +26,13 @@ function SignInForm() {
         ...signIn
       }
       try {
-          await axios.post('/auth/sign_in', payload)
-          .then((res) => {
-            const userInfo = res.data.data
-            const userId = res.data.data.id
-            console.log(res)
-              if (res.status === 200){
-                saveAuthTokens(res.headers)
-                saveUserId(userId)
-                  console.log(res)
-              };
-              navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})
-
-          })
-
+          const response = await axios.post('/auth/sign_in', payload)
+          const userInfo = response.data.data
+          const userId = response.data.data.id
+          console.log(userInfo)
+          saveAuthTokens(response.headers)
+          saveUserId(userId)
+          navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})
       } catch (err){
           console.log(err)
       }   

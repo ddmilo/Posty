@@ -26,7 +26,7 @@ class Api::V1::TodosController < ApplicationController
     private
     
     def create_todo_params
-        params.permit(:title, :description, :user_id).merge(user_id: @user.id)
+        params.permit(:todo, :title, :description, :user_id).merge(user_id: @user.id)
     end
 
 end
