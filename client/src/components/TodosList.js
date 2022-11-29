@@ -1,25 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 function TodosList(props) {
-
-  // useEffect(() => {
-  //   async function getTodos(){
-  //     try {
-        
-  //     } catch {
-  //       console.log()
-  //     }
-  //   }
-    
-  //   console.log(todos)
-    
-
-  // },[todos])
-  
-
-  return (
-
-    
+  return (  
     <div>
       TO DO LIST
       {props.todos.length > 0 ? 

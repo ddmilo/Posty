@@ -51,6 +51,12 @@ function Dashboard(props) {
     const fetchUserTodos = () => {
         const id = props.user.id
         axios.get(`/users/${id}/todos`)
+            .then(res => {
+            console.log(res.data)
+            props.setTodos(res.data)
+
+        })
+
     }
 
     const signOut = () => {
@@ -79,7 +85,7 @@ function Dashboard(props) {
             
                 { props.user.todos.length > 0 ?
                 
-                    <TodosList todos={props.user.todos} fetchUserTodos={fetchUserTodos} />
+                    <TodosList todos={props.userTodos} fetchUserTodos={fetchUserTodos} />
 
                     :
 

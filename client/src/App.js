@@ -15,6 +15,7 @@ import Home from './components/Home';
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState([])
+  const [userTodos, setUserTodos] = useState([])
   const [dataLoaded, setDataLoaded] = useState(false)
   const navigate = useNavigate();
 
@@ -39,12 +40,15 @@ function App() {
                     'content-type': 'application/json'
                 }
             });
+            console.log(response)
             console.log(response.data.data.id)
             await axios.get(`/users/${response.data.data.id}`)
             .then(res => {
-              setUser(res.data) 
+              setUser(res.data)
+              setUserTodos(res.data.todos) 
               setDataLoaded(true)
               console.log(user)
+              console.log(userTodos)
               console.log('Data is loaded: ' + dataLoaded) 
         
             })
@@ -61,18 +65,22 @@ function App() {
 
     }
     loggedIn();
-  }, [])
+  }, [setUserTodos])
 
   const setLoggedFalse = () => {
     setLoggedIn(false)
   }
 
+  const setTodos = (data) => {
+    setUserTodos(data)
+  }
+
   return (
   <div>
     <Routes>
-      <Route path='/'  element={<Home user={user} userId={user.id} isLoggedIn={isLoggedIn} dataLoaded={dataLoaded} setLoggedFalse={setLoggedFalse}/>} />
+      <Route path='/'  element={<Home userTodos={userTodos} user={user} userId={user.id} isLoggedIn={isLoggedIn} dataLoaded={dataLoaded} setLoggedFalse={setLoggedFalse} setTodos={setTodos}/>} />
       <Route path='/signup' element={<SignUpForm />} />
-      <Route path='/dashboard/:id'  element={<Dashboard  user={user} userId={user.id} />} />
+      <Route path='/dashboard/:id'  element={<Dashboard  setTodos={setTodos} user={user} userId={user.id} />} />
     </Routes>
   </div>
 

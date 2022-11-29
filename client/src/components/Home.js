@@ -58,7 +58,7 @@ function Home(props) {
 // console.log(setUser)
   return (
     <div className="Home">
-      { props.isLoggedIn ? <Dashboard  user={props.user} userId={props.user.id} setLoggedFalse={props.setLoggedFalse}/> 
+      { props.isLoggedIn ? <Dashboard userTodos={props.userTodos} user={props.user} userId={props.user.id} setTodos={props.setTodos} setLoggedFalse={props.setLoggedFalse}/> 
       
       
       : 
