@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react'
 
 function TodosList(props) {
-  const [todos, setTodos] = useState([])
-  console.log(props)
 
-  useEffect(() => {
-    setTodos(props.todos)
-    console.log(todos)
+  // useEffect(() => {
+  //   async function getTodos(){
+  //     try {
+        
+  //     } catch {
+  //       console.log()
+  //     }
+  //   }
+    
+  //   console.log(todos)
+    
 
-  })
+  // },[todos])
   
 
   return (
 
     
     <div>
+      TO DO LIST
       {props.todos.length > 0 ? 
       <div>
-        {todos.map((todo) => (
+        {props.todos.map((todo) => (
           <div key={todo.id}>
             <h2>Task: {todo.title}</h2>
             <h3>Description: {todo.description}</h3>

@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import SignInForm from './components/SignInForm';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAxiosDefaults, userIsLoggedIn} from './util/SessionHeaderUtil';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import Dashboard from './components/Dashboard';
 import SignUpForm from './components/SignUpForm';
 import Home from './components/Home';
@@ -16,7 +16,12 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState([])
   const [dataLoaded, setDataLoaded] = useState(false)
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const fetchUser = (userId) => {
+
+ 
+   }
 
   useEffect(() => {
     async function loggedIn(){
@@ -34,24 +39,21 @@ function App() {
                     'content-type': 'application/json'
                 }
             });
-            console.log(response)
-            fetchUser(response.data.data.id)
-            // await axios.get(`/users/${response.data.data.id}`)
-            //     .then(res => {
-            //       setUser(res.data)
-            //       // navigate(`/dashboard/${response.data.data.id}`)
-            //       // navigate(`/dashboard/${response.data.data.id}`, {state:{name: user.email}})
-            //     })
-                
+            console.log(response.data.data.id)
+            await axios.get(`/users/${response.data.data.id}`)
+            .then(res => {
+              setUser(res.data) 
+              setDataLoaded(true)
+              console.log(user)
+              console.log('Data is loaded: ' + dataLoaded) 
+        
+            })
+        
+            
                 setLoggedIn(true)
-
-
-                        // const userData = res.data
-                        // SetTheUser(setUser => ({...setUser, userData}))
-                        // console.log(userData)
-                        // console.log(setUser)
-
-
+                if (loggedIn === true) {
+                  navigate(`/dashboard/${response.data.data.id}`)
+                }        
         }
       } catch (error) {
         console.log(error);
@@ -59,36 +61,20 @@ function App() {
 
     }
     loggedIn();
-  }, [isLoggedIn])
-
-  const fetchUser = (userId) => {
-   axios.get(`/users/${userId}`)
-    .then(res => {
-      setUser(res.data) 
-      setDataLoaded(true)
-
-    })
-
-    console.log(user)
-
-  }
+  }, [])
 
   const setLoggedFalse = () => {
     setLoggedIn(false)
   }
 
-
-  
-
-
   return (
-  <BrowserRouter>
+  <div>
     <Routes>
       <Route path='/'  element={<Home user={user} userId={user.id} isLoggedIn={isLoggedIn} dataLoaded={dataLoaded} setLoggedFalse={setLoggedFalse}/>} />
       <Route path='/signup' element={<SignUpForm />} />
       <Route path='/dashboard/:id'  element={<Dashboard  user={user} userId={user.id} />} />
     </Routes>
-  </BrowserRouter>
+  </div>
 
   );
 }

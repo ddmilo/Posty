@@ -13,11 +13,16 @@ function Dashboard(props) {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(props)
+    console.log(props.user.todos.length)
     // console.log(user)
     // console.log(location.state);
     // // console.log(id)
     // console.log(props)
 
+    useEffect(() => {
+        setUser(props.user)
+        setUserTodos(props.user.todos)
+    }, [])
     // useEffect(() => {
     // })
     // useEffect(() => {
@@ -72,8 +77,15 @@ function Dashboard(props) {
                 null
             }
             
-            
-                <TodosList todos={props.user.todos} />
+                { props.user.todos.length > 0 ?
+                
+                    <TodosList todos={props.user.todos} fetchUserTodos={fetchUserTodos} />
+
+                    :
+
+                    <h1>NO TODOS</h1>
+
+                }
 
     
         <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>
