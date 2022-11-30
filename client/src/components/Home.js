@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { setAxiosDefaults, userIsLoggedIn } from "../util/SessionHeaderUtil";
 import Dashboard from "./Dashboard";
+import logoNote from "./../images/logoNote.png";
+import { Typography } from "@mui/material";
 
 function Home(props) {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -24,10 +26,37 @@ function Home(props) {
           setLoggedFalse={props.setLoggedFalse}
         />
       ) : (
-        <div>
-          <div>Sign Out</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "8%",
+          }}
+        >
+          <img
+            style={{
+              width: "200px",
+              position: 'absolute'
+            }}
+            src={logoNote}
+            alt="logo"
+          />
+
+          <Typography
+            variant="h4"
+            sx={{
+              fontFamily: "Permanent Marker",
+              width: "200px",
+              height: '400px',
+              position:'relative',
+              top: "30px",
+              left: '100px',
+              transform: "rotate(-30deg)",
+            }}
+          >
+            SHTICKY
+          </Typography>
           <SignInForm />
-          <Link to="/signup">Don't have an account? Register here.</Link>
         </div>
       )}
     </div>

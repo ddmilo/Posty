@@ -71,15 +71,20 @@ function Dashboard(props) {
         <CreateTodo handleCreateTaskButton={handleCreateTaskButton} />
       ) : null}
 
-      {props.user.todos.length > 0 ? (
+      {/* {props.user.todos.length > 0 ? (
         <TodosList
           todos={props.userTodos}
           fetchUserTodos={fetchUserTodos}
           userId={props.user.id}
         />
       ) : (
-        <h1>NO TODOS</h1>
-      )}
+        null
+      )} */}
+      <TodosList
+        todos={props.userTodos}
+        fetchUserTodos={fetchUserTodos}
+        userId={props.user.id}
+      />
     </div>
   );
 }

@@ -1,9 +1,9 @@
-import { Box, IconButton, Modal } from "@mui/material";
+import { Box, IconButton, Modal, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import "./../styles/Nav.css";
-import PostAddRoundedIcon from "@mui/icons-material/PostAddRounded";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 import CreateTodo from "./CreateTodo";
 
 const style = {
@@ -26,16 +26,21 @@ const Nav = (props) => {
   return (
     <div className="navContainer">
       <div className="nav">
-        <h3>Hello, {props.userName}!</h3>
+        <Typography
+          sx={{ position: "absolute", left: "10px", bottom: "12px" }}
+          variant="h6"
+        >
+          Hello, {props.userName}!
+        </Typography>
         <IconButton onClick={handleOpen}>
-          <PostAddRoundedIcon
+          <PostAddIcon
             // onClick={handleOpen}
-            style={{ color: "green" }}
-          ></PostAddRoundedIcon>
+            sx={{ color: "green", fontSize:'30px' }}
+          ></PostAddIcon>
         </IconButton>
 
-        <IconButton>
-          <LogoutIcon style={{ color: "red" }} onClick={props.signOut} />
+        <IconButton onClick={props.signOut}>
+          <LogoutIcon style={{ color: "red" }}  />
         </IconButton>
         <Modal open={open}>
           <Box sx={style}>

@@ -32,55 +32,65 @@ function TodosList(props) {
             <Card
               className="card"
               key={todo.id}
-              hover
               sx={{
-                minWidth: 275,
-                height: '15em',
-                transform: 'rotate(-6deg)',
+                width: "275px",
+                height: "15em",
+                transform: "rotate(-6deg)",
                 boxShadow: "5px 5px 5px black;",
                 backgroundColor: "#ffff99;",
-                transition: 'transform .15s linear',
-                ':nth-child(even)': {
-                  transform: 'rotate(4deg)',
-                  position: 'relative',
-                  top: '5px',
-                  backgroundColor:'#cfc'
+
+                transition: "transform .15s linear",
+                ":nth-of-type(even)": {
+                  transform: "rotate(4deg)",
+                  position: "relative",
+                  top: "5px",
+                  backgroundColor: "#cfc",
                 },
-                ':nth-child(3n)': {
-                  transform: 'rotate(-3deg)',
-                  position: 'relative',
-                  top: '-5px',
-                  backgroundColor: '#ccf'
+                ":nth-of-type(3n)": {
+                  transform: "rotate(-3deg)",
+                  position: "relative",
+                  top: "-5px",
+                  backgroundColor: "#ccf",
                 },
-                ':nth-child(5n)': {
-                  transform: 'rotate(5deg)',
-                  position: 'relative',
-                  top: '-10px'
+                ":nth-of-type(5n)": {
+                  transform: "rotate(5deg)",
+                  position: "relative",
+                  top: "-10px",
                 },
-                ':hover, :focus': {
-                  boxShadow:'10px 10px 7px rgba(0,0,0,.7)',
-                  transform: 'scale(1.25)',
-                  position:'relative',
-                  zIndex:'5'
-                }
-                
+                ":hover, :focus": {
+                  boxShadow: "10px 10px 7px rgba(0,0,0,.7)",
+                  transform: "scale(1.25)",
+                  position: "relative",
+                  zIndex: "5",
+                },
               }}
             >
               <CardContent>
-                <Typography sx={{ fontSize: 14 }}>Task</Typography>
-                <Typography variant="h5" component="div">
+                <Typography
+                  variant="h6"
+                  sx={{ fontFamily: "Permanent Marker" }}
+                >
                   {todo.title}
                 </Typography>
-                <Typography variant="body2">{todo.description}</Typography>
-                <FormGroup>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontFamily: "Reenie Beanie",
+                    fontSize: "30",
+                    flexShrink: "1",
+                  }}
+                >
+                  {todo.description}
+                </Typography>
+                {/* <FormGroup>
                   <FormControlLabel control={<Checkbox />} label="Completed?" />
-                </FormGroup>
+                </FormGroup> */}
                 <ButtonGroup className="cardButtons">
-                  <IconButton>
+                  {/* <IconButton>
                     <EditIcon />
-                  </IconButton>
-                  <IconButton>
-                    <DeleteIcon onClick={() => destroyTodo(id, todo.id)} />
+                  </IconButton> */}
+                  <IconButton onClick={() => destroyTodo(id, todo.id)}>
+                    <DeleteIcon />
                   </IconButton>
                 </ButtonGroup>
               </CardContent>
