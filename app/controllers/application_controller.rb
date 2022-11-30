@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
         # devise_parameter_sanitizer.permit(:account_update, keys: [ :username])        
     end  
 
-    def fallback_index_html
+    def fallback_index_html #! needed for Heroku deployemnt to serve up React
         render :file => '/public/index.html'
     end
 end
