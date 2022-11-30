@@ -35,7 +35,7 @@ function Home(props) {
           setLoggedFalse={props.setLoggedFalse}
         />
       ) : (
-        <div>
+        <div style={{overflow:'hidden'}}>
 
 
           <Typography
@@ -49,6 +49,7 @@ function Home(props) {
               top: "60px",
               left: "70px",
               transform: "rotate(-30deg)",
+              overflow: 'hidden'
             }}
           >
                       <img
