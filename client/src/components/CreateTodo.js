@@ -25,7 +25,7 @@ function CreateTodo(props) {
                     if(res.status === 201){
                         console.log("ToDo created successfully for User:" + " " + props.userName)
                         props.fetchUserTodo();
-                        props.handleCreateTaskButton();
+                        props.handleClose();
                     }
                 })
         } catch (error) {
