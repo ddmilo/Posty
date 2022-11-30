@@ -1,0 +1,16 @@
+.cardContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+}
+.cardButtons {
+    position: relative;
+    top: 20px;
+    left: 180px;
+    
+}
