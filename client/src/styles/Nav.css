@@ -1,7 +1,7 @@
 .navContainer {
     position: relative;
   /* height: 100%; */
-  width: 100%;
+  width: 100vw;
   /* box-shadow: 10px 5px 5px black; */
   border-bottom: solid black;
   
