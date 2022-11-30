@@ -16,7 +16,16 @@ function Home(props) {
   console.log(props.isLoggedIn);
 
   return (
-    <div className="Home">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignContent:'center',
+        height: "100vh",
+      }}
+      className="Home"
+    >
       {props.isLoggedIn ? (
         <Dashboard
           userTodos={props.userTodos}
@@ -26,34 +35,33 @@ function Home(props) {
           setLoggedFalse={props.setLoggedFalse}
         />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "8%",
-          }}
-        >
-          <img
-            style={{
-              width: "200px",
-              position: 'absolute'
-            }}
-            src={logoNote}
-            alt="logo"
-          />
+        <div>
+
 
           <Typography
             variant="h4"
             sx={{
               fontFamily: "Permanent Marker",
               width: "200px",
-              height: '400px',
+              height: "400px",
               position:'relative',
-              top: "30px",
-              left: '100px',
+              lineHeight:'0.5',
+              top: "60px",
+              left: "70px",
               transform: "rotate(-30deg)",
             }}
           >
+                      <img
+            style={{
+              width: "200px",
+              left: '400px',
+              top: '100px',
+              transform: "rotate(12deg)",
+
+            }}
+            src={logoNote}
+            alt="logo"
+          />
             SHTICKY
           </Typography>
           <SignInForm />

@@ -58,27 +58,30 @@ function SignInForm() {
   };
 
   return (
-    <Box style={style}>
+    // <Box style={style}>
       <div className="signIn">
         <FormControl sx={{gap:'20px'}}>
           {/* <h1>Sign In Here</h1> */}
           <TextField
             label="Email"
             name="email"
+            variant="standard"
             value={signIn.email}
             onChange={handleTextField}
+            
           />
           <TextField
             label="Password"
             name="password"
             type="password"
+            variant="standard"
             value={signIn.password}
             onChange={handleTextField}
           />
           <Button variant="contained" label="Sign In" onClick={handleSubmit}>
             Sign In
           </Button>
-          <Button variant="text" onClick={handleOpen}>Don't have an account? Click me.</Button>
+          <Button variant="text" sx={{color: 'white'}} onClick={handleOpen}>Don't have an account? Click me.</Button>
           <Modal open={open}>
           <Box sx={style}>
             <SignUpForm
@@ -90,7 +93,7 @@ function SignInForm() {
         </Modal>
         </FormControl>
       </div>
-    </Box>
+    //  </Box>
   );
 }
 

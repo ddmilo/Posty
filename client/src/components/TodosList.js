@@ -28,7 +28,7 @@ function TodosList(props) {
     <div>
       {props.todos.length > 0 ? (
         <div className="cardContainer">
-          {props.todos.map((todo) => (
+          {props.todos.slice().reverse().map((todo) => (
             <Card
               className="card"
               key={todo.id}

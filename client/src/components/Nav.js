@@ -27,20 +27,27 @@ const Nav = (props) => {
     <div className="navContainer">
       <div className="nav">
         <Typography
-          sx={{ position: "absolute", left: "10px", bottom: "12px" }}
+          sx={{
+            position: "absolute",
+            left: "10px",
+            bottom: "8px",
+            fontFamily: "Permanent Marker",
+          }}
           variant="h6"
         >
-          Hello, {props.userName}!
+          What needs to be reminded, {props.userName}?
         </Typography>
         <IconButton onClick={handleOpen}>
-          <PostAddIcon
-            // onClick={handleOpen}
-            sx={{ color: "green", fontSize:'30px' }}
-          ></PostAddIcon>
+        <Typography sx={{ fontFamily: "Permanent Marker", color:'green'}} variant="h6">
+            New Note
+          </Typography>
         </IconButton>
 
         <IconButton onClick={props.signOut}>
-          <LogoutIcon style={{ color: "red" }}  />
+          <Typography sx={{ fontFamily: "Permanent Marker", color:'red'}} variant="h6">
+            Logout
+          </Typography>
+          {/* <LogoutIcon style={{ color: "red" }} /> */}
         </IconButton>
         <Modal open={open}>
           <Box sx={style}>
