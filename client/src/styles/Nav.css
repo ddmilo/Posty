@@ -1,13 +1,21 @@
-.container {
+.navContainer {
     /* outline: auto; */
     height: 50px;
     box-shadow: 10px 5px 5px black;
     margin: 0 auto;
     z-index: 2;
+
 }
 
 .nav {
     display: flex;
     flex-direction:row;
     justify-content: end;   
+    margin: 10px;
+}
+
+.nav h3 {
+    position: absolute;
+    top: 18px;
+    right: 50px;
 }

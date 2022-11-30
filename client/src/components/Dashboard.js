@@ -63,7 +63,12 @@ function Dashboard(props) {
     }
 
     const handleCreateTaskButton = () => {
-        setTodoForm(true)
+        if (showTodoForm === false){
+            setTodoForm(true)
+        } else {
+            setTodoForm(false)
+        }
+        
         console.log(showTodoForm)
     }
     // console.log(user)
@@ -74,14 +79,14 @@ function Dashboard(props) {
         <header className='.header'><Nav userName={props.user.first_name} signOut={signOut}/></header>
         <Button style={{backgroundColor: 'green' }} variant='contained' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
-                <CreateTodo fetchUserTodo={fetchUserTodos} userId={props.user.id} userName={props.user.first_name}/>
+                <CreateTodo fetchUserTodo={fetchUserTodos} userId={props.user.id} userName={props.user.first_name} handleCreateTaskButton={handleCreateTaskButton}/>
                 :
                 null
             }
             
                 { props.user.todos.length > 0 ?
                 
-                    <TodosList todos={props.userTodos} fetchUserTodos={fetchUserTodos} />
+                    <TodosList todos={props.userTodos} fetchUserTodos={fetchUserTodos} userId={props.user.id}/>
 
                     :
 

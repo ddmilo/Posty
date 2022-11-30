@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, TextField } from '@mui/material'
 import { saveAuthTokens, saveUserId } from '../util/SessionHeaderUtil'
-import { Navigate, useNavigate } from 'react-router'
+import { Navigate, useNavigate, useLocation } from 'react-router'
 
 
 
@@ -13,6 +13,7 @@ function SignInForm() {
   })
 
   const navigate = useNavigate();
+  // const location = useLocation();
 
   const handleTextField = (e) => {
     setSignIn({...signIn, [e.target.name]: e.target.value})
@@ -32,7 +33,8 @@ function SignInForm() {
           console.log(userInfo)
           saveAuthTokens(response.headers)
           saveUserId(userId)
-          navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})
+          window.location.reload()
+          // navigate(`/dashboard/${userId}`, {replace: true}, {state: {userInfo}})
       } catch (err){
           console.log(err)
       }   

@@ -4,8 +4,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import React, {useState, useEffect} from 'react'
 import './../styles/TodosList.css'
 import ButtonGroup from '@mui/material/ButtonGroup';
+import axios from 'axios';
+import { useParams } from 'react-router';
 
 function TodosList(props) {
+
+  const id = props.userId
+  console.log(id)
+  console.log(props.userId)
+
+
+  const destroyTodo = (userId, todoId) => {
+    axios.delete(`/users/${userId}/todos/${todoId}`)
+    props.fetchUserTodos()
+  }
   return (  
     <div>
       TO DO LIST
@@ -15,7 +27,7 @@ function TodosList(props) {
         {props.todos.map((todo) => (
           
             
-          <Card className='.card' key={todo.id} hover sx={{minWidth: 275}}>
+          <Card className='card' key={todo.id} hover sx={{minWidth: 275}}>
             <CardContent>
               <Typography sx={{fontSize: 14}}>Task</Typography>
               <Typography variant="h5" component="div">
@@ -32,7 +44,7 @@ function TodosList(props) {
                   <EditIcon />
                 </IconButton>
                 <IconButton>
-                  <DeleteIcon />
+                  <DeleteIcon onClick={() => destroyTodo(id, todo.id)}/>
                 </IconButton>
               </ButtonGroup>
             </CardContent>

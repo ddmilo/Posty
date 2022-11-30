@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import SignInForm from './components/SignInForm';
-import {Link, Navigate, useNavigate} from 'react-router-dom';
+import {Link, Navigate, useNavigate, useLocation} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAxiosDefaults, userIsLoggedIn} from './util/SessionHeaderUtil';
@@ -19,6 +19,7 @@ function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
   const navigate = useNavigate();
   const randomProp = 'This is a prop'
+  const location = useLocation()
 
   const fetchUser = (userId) => {
 
@@ -57,7 +58,8 @@ function App() {
             
                 setLoggedIn(true)
                 if (loggedIn === true) {
-                  navigate(`/dashboard/${response.data.data.id}`)
+                  location.reload()
+                  
                 }        
         }
       } catch (error) {
