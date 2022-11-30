@@ -1,0 +1,13 @@
+.container {
+    /* outline: auto; */
+    height: 50px;
+    box-shadow: 10px 5px 5px black;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.nav {
+    display: flex;
+    flex-direction:row;
+    justify-content: end;   
+}

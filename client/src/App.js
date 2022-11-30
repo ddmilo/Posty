@@ -18,6 +18,7 @@ function App() {
   const [userTodos, setUserTodos] = useState([])
   const [dataLoaded, setDataLoaded] = useState(false)
   const navigate = useNavigate();
+  const randomProp = 'This is a prop'
 
   const fetchUser = (userId) => {
 
@@ -80,7 +81,7 @@ function App() {
     <Routes>
       <Route path='/'  element={<Home userTodos={userTodos} user={user} userId={user.id} isLoggedIn={isLoggedIn} dataLoaded={dataLoaded} setLoggedFalse={setLoggedFalse} setTodos={setTodos}/>} />
       <Route path='/signup' element={<SignUpForm />} />
-      <Route path='/dashboard/:id'  element={<Dashboard  setTodos={setTodos} user={user} userId={user.id} />} />
+      <Route path='/dashboard/:id'  element={<Dashboard randomProp={randomProp} setTodos={setTodos} user={user} userId={user.id} />} />
     </Routes>
   </div>
 

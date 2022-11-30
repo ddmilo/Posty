@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate, useLocation, useParams } from 'react-router-dom';
 import setAxiosDefaults, { clearAuthTokens, userIsLoggedIn } from '../util/SessionHeaderUtil'
 import CreateTodo from './CreateTodo';
+import Nav from './Nav';
 import TodosList from './TodosList';
 
 function Dashboard(props) {
@@ -13,11 +14,6 @@ function Dashboard(props) {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(props)
-    console.log(props.user.todos.length)
-    // console.log(user)
-    // console.log(location.state);
-    // // console.log(id)
-    // console.log(props)
 
     useEffect(() => {
         setUser(props.user)
@@ -75,8 +71,8 @@ function Dashboard(props) {
     
   return (
     <div>
-        <h1>Hello {props.user.first_name}, Welcome to your dashboard!</h1>
-        <Button variant='text' onClick={handleCreateTaskButton}>Create Task</Button>
+        <header className='.header'><Nav userName={props.user.first_name} signOut={signOut}/></header>
+        <Button style={{backgroundColor: 'green' }} variant='contained' onClick={handleCreateTaskButton}>Create Task</Button>
             {showTodoForm ? 
                 <CreateTodo fetchUserTodo={fetchUserTodos} userId={props.user.id} userName={props.user.first_name}/>
                 :
@@ -94,7 +90,6 @@ function Dashboard(props) {
                 }
 
     
-        <Button style={{backgroundColor: 'red' }} variant='contained' onClick={signOut}>Sign Out</Button>
     </div>
   )
 }

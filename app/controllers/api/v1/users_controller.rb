@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
         @user = User.find(params[:id])
 
         render json: @user, :include => {
-            :todos => @user.todos
+            :todos => @user.todos.order('created_at DESC')
         }
     end
 
