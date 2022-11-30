@@ -44,7 +44,7 @@ function SignInForm() {
       ...signIn,
     };
     try {
-      const response = await axios.post("/auth/sign_in", payload);
+      const response = await axios.post("/api/v1/auth/sign_in", payload);
       const userInfo = response.data.data;
       const userId = response.data.data.id;
       console.log(userInfo);

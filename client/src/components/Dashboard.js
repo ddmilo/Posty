@@ -30,7 +30,7 @@ function Dashboard(props) {
 
   const fetchUserTodos = () => {
     const id = props.user.id;
-    axios.get(`/users/${id}/todos`).then((res) => {
+    axios.get(`/api/v1/users/${id}/todos`).then((res) => {
       console.log(res.data);
       props.setTodos(res.data);
     });

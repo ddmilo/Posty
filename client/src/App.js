@@ -28,7 +28,7 @@ function App() {
         await getAxiosDefaults();
         console.log(signedIn);
         if (signedIn) {
-          const response = await axios.get("/auth/validate_token", {
+          const response = await axios.get("/api/v1/auth/validate_token", {
             headers: {
               uid: localStorage.getItem("uid"),
               client: localStorage.getItem("client"),
@@ -39,7 +39,7 @@ function App() {
           });
           console.log(response);
           console.log(response.data.data.id);
-          await axios.get(`/users/${response.data.data.id}`).then((res) => {
+          await axios.get(`/api/v1/users/${response.data.data.id}`).then((res) => {
             setUser(res.data);
             setUserTodos(res.data.todos);
             setDataLoaded(true);

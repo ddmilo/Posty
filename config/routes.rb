@@ -6,8 +6,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'main#index'
-  get '*path' => 'main#index'
+
 
   namespace :api do
     namespace :v1 do
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # get '*path', to: "application#fallback_index_html", constraints: ->(request) do
-  #   !request.xhr? && request.format.html?
-  # end
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
 end

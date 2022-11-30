@@ -43,7 +43,7 @@ function SignUpForm(props) {
       ...user,
     };
     try {
-      await axios.post("/auth", payload).then((res) => {
+      await axios.post("/api/v1/auth", payload).then((res) => {
         if (res.status === 201) {
           props.handleClose();
           window.location.reload()

@@ -21,7 +21,7 @@ function TodosList(props) {
   console.log(props.userId);
 
   const destroyTodo = (userId, todoId) => {
-    axios.delete(`/users/${userId}/todos/${todoId}`);
+    axios.delete(`/api/v1/users/${userId}/todos/${todoId}`);
     props.fetchUserTodos();
   };
   return (
