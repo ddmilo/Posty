@@ -10,4 +10,8 @@ class ApplicationController < ActionController::API
         devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs) 
         # devise_parameter_sanitizer.permit(:account_update, keys: [ :username])        
     end  
+
+    def fallback_index_html
+        render :file => '/public/index.html'
+    end
 end
