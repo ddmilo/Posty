@@ -32,9 +32,6 @@ function SignUpForm(props) {
 
   const handleTextField = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
-
-    console.log(redirect);
   };
 
   const handleSubmit = async (e) => {
@@ -50,8 +47,6 @@ function SignUpForm(props) {
           // if (redirect === true) {
           //   navigate("/", { replace: true });
           // }
-          console.log(res);
-          console.log(redirect);
         }
       });
     } catch (err) {

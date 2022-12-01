@@ -16,7 +16,6 @@ function Dashboard(props) {
   const [userTodos, setUserTodos] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(props);
 
   useEffect(() => {
     setUser(props.user);
@@ -25,13 +24,11 @@ function Dashboard(props) {
 
   const setUserDash = () => {
     setUser(props.user);
-    console.log("User set in dashboard:" + " " + user);
   };
 
   const fetchUserTodos = () => {
     const id = props.user.id;
     axios.get(`/api/v1/users/${id}/todos`).then((res) => {
-      console.log(res.data);
       props.setTodos(res.data);
     });
   };
@@ -48,8 +45,6 @@ function Dashboard(props) {
     } else {
       setTodoForm(false);
     }
-
-    console.log(showTodoForm);
   };
   // console.log(user)
   // console.log(user.todos.length)

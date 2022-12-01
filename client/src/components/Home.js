@@ -12,8 +12,7 @@ function Home(props) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const navigate = useNavigate();
   const id = props.user.id;
-  console.log(props);
-  console.log(props.isLoggedIn);
+
 
   return (
     <div

@@ -12,7 +12,6 @@ function CreateTodo(props) {
 
   const handleOnChange = (e) => {
     setTodo({ ...todo, [e.target.name]: e.target.value });
-    console.log(todo);
   };
 
   const handleSubmit = async (e) => {
@@ -21,9 +20,6 @@ function CreateTodo(props) {
     try {
       await axios.post(`/api/v1/users/${id}/todos`, payload).then((res) => {
         if (res.status === 201) {
-          console.log(
-            "ToDo created successfully for User:" + " " + props.userName
-          );
           props.fetchUserTodo();
           props.handleClose();
         }

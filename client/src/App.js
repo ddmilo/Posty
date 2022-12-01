@@ -26,7 +26,6 @@ function App() {
       try {
         const signedIn = await userIsLoggedIn();
         await getAxiosDefaults();
-        console.log(signedIn);
         if (signedIn) {
           const response = await axios.get("/api/v1/auth/validate_token", {
             headers: {
@@ -37,15 +36,11 @@ function App() {
               "content-type": "application/json",
             },
           });
-          console.log(response);
-          console.log(response.data.data.id);
+
           await axios.get(`/api/v1/users/${response.data.data.id}`).then((res) => {
             setUser(res.data);
             setUserTodos(res.data.todos);
             setDataLoaded(true);
-            console.log(user);
-            console.log(userTodos);
-            console.log("Data is loaded: " + dataLoaded);
           });
 
           setLoggedIn(true);
