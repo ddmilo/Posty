@@ -7,14 +7,16 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import CreateTodo from "./CreateTodo";
 
 const style = {
+  display:'flex',
+  justifyConter:'center',
+  alignItems:'center',
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
+  height: 400,
+  bgcolor: "none",
   p: 4,
 };
 
@@ -35,7 +37,7 @@ const Nav = (props) => {
           }}
           variant="h6"
         >
-          What needs to be reminded, {props.userName}?
+          What do you need to be reminded of, {props.userName}?
         </Typography>
         <IconButton onClick={handleOpen}>
         <Typography sx={{ fontFamily: "Permanent Marker", color:'green'}} variant="h6">

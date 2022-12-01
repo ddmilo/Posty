@@ -13,14 +13,13 @@ function Home(props) {
   const navigate = useNavigate();
   const id = props.user.id;
 
-
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        alignContent:'center',
+        alignContent: "center",
         height: "100vh",
       }}
       className="Home"
@@ -34,35 +33,32 @@ function Home(props) {
           setLoggedFalse={props.setLoggedFalse}
         />
       ) : (
-        <div style={{overflow:'hidden'}}>
-
-
+        <div style={{ overflow: "hidden", display:'flex', justifyContent:'center', flexDirection: 'column' }}>
           <Typography
             variant="h4"
             sx={{
               fontFamily: "Permanent Marker",
               width: "200px",
               height: "400px",
-              position:'relative',
-              lineHeight:'0.5',
+              position: "relative",
+              lineHeight: "0.5",
               top: "60px",
               left: "70px",
               transform: "rotate(-30deg)",
-              overflow: 'hidden'
+              overflow: "hidden",
             }}
           >
-                      <img
-            style={{
-              width: "200px",
-              left: '400px',
-              top: '100px',
-              transform: "rotate(12deg)",
-
-            }}
-            src={logoNote}
-            alt="logo"
-          />
-            SHTICKY
+            <img
+              style={{
+                width: "200px",
+                left: "400px",
+                top: "100px",
+                transform: "rotate(12deg)",
+              }}
+              src={logoNote}
+              alt="logo"
+            />
+            POSTY
           </Typography>
           <SignInForm />
         </div>
