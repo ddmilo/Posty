@@ -35,7 +35,6 @@ function SignInForm() {
 
   const handleTextField = (e) => {
     setSignIn({ ...signIn, [e.target.name]: e.target.value });
-    console.log(signIn);
   };
 
   const handleSubmit = async (e) => {
@@ -47,7 +46,6 @@ function SignInForm() {
       const response = await axios.post("/api/v1/auth/sign_in", payload);
       const userInfo = response.data.data;
       const userId = response.data.data.id;
-      console.log(userInfo);
       saveAuthTokens(response.headers);
       saveUserId(userId);
       window.location.reload();
