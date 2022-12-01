@@ -14,7 +14,6 @@ import {
 import axios from "axios";
 import { React, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { default as CustomInput } from "./CustomInput";
 
 function CreateTodo(props) {
   const [todo, setTodo] = useState({
