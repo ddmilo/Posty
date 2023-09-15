@@ -24,8 +24,8 @@ function App() {
   useEffect(() => {
     async function loggedIn() {
       try {
-        const signedIn = await userIsLoggedIn();
-        await getAxiosDefaults();
+        const signedIn =  userIsLoggedIn();
+         getAxiosDefaults();
         if (signedIn) {
           const response = await axios.get("/api/v1/auth/validate_token", {
             headers: {

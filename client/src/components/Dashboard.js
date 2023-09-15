@@ -77,8 +77,8 @@ function Dashboard(props) {
       )} */}
       <TodosList
         todos={props.userTodos}
-        fetchUserTodos={fetchUserTodos}
         userId={props.user.id}
+        fetchUserTodos={fetchUserTodos}
       />
     </div>
   );
